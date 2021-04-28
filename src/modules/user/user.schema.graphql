@@ -1,0 +1,12 @@
+type User {
+  about: String
+  created: Int
+  delay: Int
+  id: ID!
+  karma: Int
+  submitted: [Int]
+}
+
+type Query {
+  User(id: ID): User
+}

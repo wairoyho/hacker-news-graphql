@@ -1,0 +1,89 @@
+type StoryCommentsConnection {
+  pageInfo: PageInfo!
+  edges: [StoryCommentsEdge]
+  nodes: [Comment]
+  totalCount: Int
+}
+
+type StoryCommentsEdge {
+  cursor: String!
+  node: Comment
+}
+
+enum StoryType {
+  # TOP
+  # NEW
+  # BEST
+  # SHOW
+  # JOB
+  story
+  comment
+  job
+  poll
+  pollopt
+}
+
+type Story implements Node {
+  author: User
+  by: String
+  descendants: Int
+  id: ID!
+  """
+  the list of Comments in this Story
+  """
+  kids: [Int]
+  comments(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    """
+    Returns the first n elements from the list.
+    """
+    first: Int
+    """
+    Returns the last n elements from the list.
+    """
+    last: Int
+  ): StoryCommentsConnection
+  score: Int
+  time: Int
+  title: String
+  type: StoryType
+  url: String
+}
+
+enum StoryTypeInput {
+  TOP
+  NEW
+  BEST
+  SHOW
+  JOB
+}
+
+type StoryListConnection {
+  pageInfo: PageInfo!
+  edges: [StoryEdge]
+  nodes: [Story]
+  totalCount: Int
+}
+
+type StoryEdge {
+  cursor: String!
+  node: Story
+}
+
+type Query {
+  Story(id: ID): Story
+  StoryList(
+    type: StoryTypeInput
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): StoryListConnection
+}

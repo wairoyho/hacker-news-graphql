@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Story service getStoryById 1`] = `
+Object {
+  "by": "user a",
+  "descendants": 7262,
+  "id": 10001,
+  "kids": Array [
+    12000,
+    13000,
+    14000,
+  ],
+  "score": 99,
+  "time": 1602259200,
+  "title": "taiwan number one",
+  "type": "story",
+  "url": "https://example.com",
+}
+`;

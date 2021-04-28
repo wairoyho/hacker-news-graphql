@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Story resolver will fail every time 1`] = `
+Object {
+  "createdAt": 2020-12-02T09:23:54.907Z,
+  "id": 14,
+  "name": "LeBron James",
+}
+`;

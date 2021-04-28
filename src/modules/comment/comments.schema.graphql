@@ -1,0 +1,33 @@
+type Comment implements Node {
+  by: String
+  author: User
+  id: ID!
+  kids: [Int]
+  comments: [Comment]
+  parent: Int
+  text: String
+  time: Int
+}
+
+type CommentEdge {
+  cursor: String!
+  node: Comment
+}
+
+type CommentListConnection {
+  pageInfo: PageInfo!
+  edges: [CommentEdge]
+  nodes: [Comment]
+  totalCount: Int
+}
+
+type Query {
+  Comment(id: ID): Comment
+  CommentList(
+    parentId: ID!
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): CommentListConnection
+}
